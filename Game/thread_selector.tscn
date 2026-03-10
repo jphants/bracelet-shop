@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg0hkkt1lywcm"]
 
-[ext_resource type="Script" uid="uid://dinqxw17bqmyy" path="res://Game/thread_selector.gd" id="1_ncj0j"]
+[ext_resource type="Script" uid="uid://dinqxw17bqmyy" path="res://Game/thread_selector.gd" id="1_ilrpv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncj0j"]
 radius = 57.00877
@@ -9,7 +9,7 @@ radius = 57.00877
 radius = 59.07622
 
 [node name="ThreadSelector" type="Node2D"]
-script = ExtResource("1_ncj0j")
+script = ExtResource("1_ilrpv")
 
 [node name="StartArea" type="Area2D" parent="."]
 position = Vector2(1022, 310)

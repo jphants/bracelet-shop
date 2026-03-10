@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dirc5tslj1e6l"]
+
+[ext_resource type="Script" uid="uid://dlf126xsnaadh" path="res://Thread/rope_segment.gd" id="1_1gukf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s4wud"]
+height = 224.0
+
+[node name="RopeSegment" type="RigidBody2D"]
+rotation = -1.5707964
+mass = 0.1
+linear_damp = 0.2
+angular_damp = 2.0
+script = ExtResource("1_1gukf")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_s4wud")
