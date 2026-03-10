@@ -1,4 +1,5 @@
 extends Node2D
+
 const THREAD_CUTTING = preload("uid://lcwy7ghgbsm6")
 
 var items = ["item1", "item2", "item3", "item4", "item5"]
@@ -13,10 +14,12 @@ var drag_handle: RopeHandle = null
 
 @onready var start_area: Area2D = $StartArea
 @onready var end_area: Area2D = $EndArea
+@onready var label_4: Label = $Label4
 
 var cutting = false
 var cut_success = false
 var is_mouse_in_cut_area = false
+
 
 func _ready() -> void:
 	print("Selected: ", items[selected_index])
@@ -35,17 +38,16 @@ func _process(delta: float) -> void:
 		# actualizar longitud del rope
 		rope.rope_length = dist + 10
 
-	
 
 	# Scroll abajo
 	if Input.is_action_just_pressed("scroll_down"):
 		selected_index = (selected_index + 1) % items.size()
-		print("Selected: ", items[selected_index])
+		label_4.text = str(items[selected_index])
 
 	# Scroll arriba
 	if Input.is_action_just_pressed("scroll_up"):
 		selected_index = (selected_index - 1 + items.size()) % items.size()
-		print("Selected: ", items[selected_index])
+		label_4.text = str(items[selected_index])
 
 	# Empezar drag
 	if Input.is_action_just_pressed("click") and is_mouse_in_selection_area:
@@ -80,16 +82,16 @@ func stop_drag():
 		return
 
 	if success:
+		# completar conexión
 		drag_handle.global_position = end_area.global_position
+		get_tree().change_scene_to_packed(THREAD_CUTTING)
 	else:
+		# cancelar
 		drag_handle.queue_free()
 		rope.queue_free()
-	
-	
+
 	rope = null
 	drag_handle = null
-	
-	get_tree().change_scene_to_packed(THREAD_CUTTING)
 
 
 func _on_start_area_mouse_entered() -> void:
@@ -104,3 +106,7 @@ func _on_end_area_mouse_entered() -> void:
 	if dragging:
 		print("Drag completed!")
 		success = true
+
+
+func _on_end_area_mouse_exited() -> void:
+	success = false

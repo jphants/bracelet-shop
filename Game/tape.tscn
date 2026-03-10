@@ -28,5 +28,12 @@ script = ExtResource("3_iuqhf")
 rope_path = NodePath("../Rope")
 metadata/_custom_type_script = "uid://1xluodkpnre3"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 67.0
+offset_top = 362.0
+offset_right = 355.0
+offset_bottom = 385.0
+text = "Put a tape so we can put the beads in"
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
