@@ -1,0 +1,48 @@
+extends Area2D
+
+var dragging := false
+var grab_offset := Vector2.ZERO
+var velocity := Vector2.ZERO
+
+# --- parámetros ajustables ---
+var stiffness := 300.0
+var damping := 12.0
+var rotation_strength := 0.004
+var max_rotation := 1
+# -----------------------------
+
+
+func _ready():
+	input_pickable = true
+
+
+func _input_event(viewport, event, shape_idx):
+
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			
+			dragging = true
+			grab_offset = global_position - get_global_mouse_position()
+
+
+func _input(event):
+
+	# Detecta el release en cualquier parte de la pantalla
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+			dragging = false
+
+
+func _process(delta):
+
+	if dragging:
+		var target = get_global_mouse_position() + grab_offset
+		
+		var force = (target - global_position) * stiffness
+		
+		velocity += force * delta
+		velocity *= 1.0 - damping * delta
+		
+		global_position += velocity * delta
+		
+		rotation = clamp(velocity.x * rotation_strength, -max_rotation, max_rotation)

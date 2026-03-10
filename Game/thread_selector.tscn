@@ -18,7 +18,7 @@ position = Vector2(1022, 310)
 shape = SubResource("CircleShape2D_ncj0j")
 
 [node name="EndArea" type="Area2D" parent="."]
-position = Vector2(221, 306)
+position = Vector2(221, 310)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
 shape = SubResource("CircleShape2D_ccn18")

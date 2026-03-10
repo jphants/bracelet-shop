@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6ajcfqfh5a6e"]
+
+[ext_resource type="Script" uid="uid://c0mcs7rooxulb" path="res://Game/tape.gd" id="1_ipr5y"]
+[ext_resource type="Script" uid="uid://b2shq2gjd4fvt" path="res://addons/ropesim/Rope.gd" id="2_2gmy3"]
+[ext_resource type="Script" uid="uid://1xluodkpnre3" path="res://addons/ropesim/RopeHandle.gd" id="3_iuqhf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmieh"]
+radius = 50.0
+
+[node name="Tape" type="Node2D"]
+script = ExtResource("1_ipr5y")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(186, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bmieh")
+
+[node name="Rope" type="Node2D" parent="."]
+position = Vector2(1096, 167)
+script = ExtResource("2_2gmy3")
+rope_length = 1000.0
+metadata/_custom_type_script = "uid://b2shq2gjd4fvt"
+
+[node name="RopeHandle" type="Marker2D" parent="."]
+position = Vector2(111, 466)
+script = ExtResource("3_iuqhf")
+rope_path = NodePath("../Rope")
+metadata/_custom_type_script = "uid://1xluodkpnre3"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

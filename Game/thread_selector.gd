@@ -1,4 +1,5 @@
 extends Node2D
+const THREAD_CUTTING = preload("uid://lcwy7ghgbsm6")
 
 var items = ["item1", "item2", "item3", "item4", "item5"]
 var selected_index = 0
@@ -13,6 +14,9 @@ var drag_handle: RopeHandle = null
 @onready var start_area: Area2D = $StartArea
 @onready var end_area: Area2D = $EndArea
 
+var cutting = false
+var cut_success = false
+var is_mouse_in_cut_area = false
 
 func _ready() -> void:
 	print("Selected: ", items[selected_index])
@@ -30,6 +34,8 @@ func _process(delta: float) -> void:
 		
 		# actualizar longitud del rope
 		rope.rope_length = dist + 10
+
+	
 
 	# Scroll abajo
 	if Input.is_action_just_pressed("scroll_down"):
@@ -78,9 +84,12 @@ func stop_drag():
 	else:
 		drag_handle.queue_free()
 		rope.queue_free()
-
+	
+	
 	rope = null
 	drag_handle = null
+	
+	get_tree().change_scene_to_packed(THREAD_CUTTING)
 
 
 func _on_start_area_mouse_entered() -> void:
