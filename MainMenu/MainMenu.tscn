@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxhg5ou81x57q"]
+[gd_scene load_steps=3 format=3 uid="uid://dxhg5ou81x57q"]
 
 [ext_resource type="Script" uid="uid://cgce2btnnuw21" path="res://MainMenu/main_menu.gd" id="1_otibh"]
+[ext_resource type="FontFile" uid="uid://by7urpddkci48" path="res://Fonts/Daydream DEMO.otf" id="2_cruaa"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,9 +28,15 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -9
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("2_cruaa")
+theme_override_font_sizes/font_size = 81
 text = "BRACELET SHOP"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 text = "PLAY"
 

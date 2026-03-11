@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg0hkkt1lywcm"]
+[gd_scene load_steps=7 format=3 uid="uid://cg0hkkt1lywcm"]
 
 [ext_resource type="Script" uid="uid://dinqxw17bqmyy" path="res://Game/thread_selector.gd" id="1_ilrpv"]
+[ext_resource type="Texture2D" uid="uid://cb2b6tyqvvjlu" path="res://Art/Spools/spool_0.png" id="2_sfkdh"]
+[ext_resource type="Texture2D" uid="uid://wjp74j7722w5" path="res://Art/Spools/spool_1.png" id="3_4veqd"]
+[ext_resource type="Texture2D" uid="uid://bhsjat0x2gkba" path="res://Art/Spools/spool_2.png" id="4_7wk4r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncj0j"]
 radius = 57.00877
@@ -37,19 +40,39 @@ offset_right = 303.0
 offset_bottom = 249.0
 text = "Drag the thread here"
 
-[node name="Label3" type="Label" parent="."]
-offset_left = 534.0
-offset_top = 104.0
-offset_right = 900.0
-offset_bottom = 127.0
-text = "Use the mousewheel to change the thread type"
-
 [node name="Label4" type="Label" parent="."]
 offset_left = 867.0
 offset_top = 163.0
 offset_right = 1233.0
 offset_bottom = 186.0
 text = "Current type:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 901.0
+offset_top = 14.0
+offset_right = 941.0
+offset_bottom = 118.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(6, 6)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_sfkdh")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4veqd")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_7wk4r")
 
 [connection signal="mouse_entered" from="StartArea" to="." method="_on_start_area_mouse_entered"]
 [connection signal="mouse_exited" from="StartArea" to="." method="_on_start_area_mouse_exited"]
