@@ -1,19 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://comtdmaadesj5"]
+[gd_scene load_steps=6 format=3 uid="uid://comtdmaadesj5"]
 
 [ext_resource type="Script" uid="uid://bls86ebn85rug" path="res://Game/Beading/bead.gd" id="1_7a7ku"]
-[ext_resource type="Texture2D" uid="uid://cx7kh4gvxp11p" path="res://Game/Beads/beads500.png" id="2_td37f"]
+[ext_resource type="Texture2D" uid="uid://b58ppb6225j1f" path="res://Art/beads_00.png" id="3_ps50o"]
+[ext_resource type="Script" uid="uid://c464t4uk8kxsn" path="res://Game/Beading/bead_sprite.gd" id="3_td37f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td37f"]
+atlas = ExtResource("3_ps50o")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdk3u"]
 radius = 14.0
 height = 42.0
 
-[node name="Bead" type="Area2D" groups=["bead"]]
+[node name="Bead" type="Area2D" node_paths=PackedStringArray("sprite_2d") groups=["bead"]]
 script = ExtResource("1_7a7ku")
+sprite_2d = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_td37f")
-vframes = 6
+texture = ExtResource("3_ps50o")
+script = ExtResource("3_td37f")
+atlas_texture = SubResource("AtlasTexture_td37f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_rdk3u")

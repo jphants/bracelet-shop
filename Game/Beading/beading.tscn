@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu181fxu5g67q"]
+[gd_scene load_steps=7 format=3 uid="uid://bu181fxu5g67q"]
 
+[ext_resource type="Script" uid="uid://bipiurtoq8ddl" path="res://Game/Beading/slots.gd" id="2_im3np"]
 [ext_resource type="Script" uid="uid://dildtal4q0o18" path="res://Game/Beading/bead_spawner.gd" id="3_im3np"]
 [ext_resource type="Script" uid="uid://cmwuu8tj7awre" path="res://Game/Beading/bracelet.gd" id="3_krhrp"]
 [ext_resource type="Script" uid="uid://cenm3bly1uddo" path="res://Game/Beading/slot.gd" id="4_im3np"]
@@ -11,10 +12,16 @@
 [node name="Beading" type="Node2D"]
 
 [node name="Bracelet" type="Node2D" parent="."]
-position = Vector2(258, 228)
+position = Vector2(163, 505)
 script = ExtResource("3_krhrp")
 
+[node name="Line2D" type="Line2D" parent="Bracelet"]
+position = Vector2(597, 0)
+points = PackedVector2Array(-760, 24, 393, 24)
+
 [node name="Slots" type="Node2D" parent="Bracelet"]
+position = Vector2(-102, 24)
+script = ExtResource("2_im3np")
 
 [node name="Slot1" type="Area2D" parent="Bracelet/Slots"]
 script = ExtResource("4_im3np")
@@ -23,66 +30,104 @@ script = ExtResource("4_im3np")
 shape = SubResource("CircleShape2D_rdk3u")
 debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
 
-[node name="Slot2" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(38, 0)
-script = ExtResource("4_im3np")
+[node name="Polygon2D" type="Polygon2D" parent="Bracelet/Slots/Slot1"]
+position = Vector2(1, 5)
+color = Color(0.50928617, 0.50928617, 0.50928617, 1)
+polygon = PackedVector2Array(-5, -1, -5, -9, 3, -9, 3, -1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot2"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
+[node name="Spawners" type="Node2D" parent="."]
 
-[node name="Slot3" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(72, 0)
-script = ExtResource("4_im3np")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot3"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
-
-[node name="Slot4" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(110, 0)
-script = ExtResource("4_im3np")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot4"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
-
-[node name="Slot5" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(157, 0)
-script = ExtResource("4_im3np")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot5"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
-
-[node name="Slot6" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(195, 0)
-script = ExtResource("4_im3np")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot6"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
-
-[node name="Slot7" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(229, 0)
-script = ExtResource("4_im3np")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot7"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
-
-[node name="Slot8" type="Area2D" parent="Bracelet/Slots"]
-position = Vector2(267, 0)
-script = ExtResource("4_im3np")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bracelet/Slots/Slot8"]
-shape = SubResource("CircleShape2D_rdk3u")
-debug_color = Color(0.8388472, 0.33496118, 0.5015015, 0.41960785)
-
-[node name="BeadSpawner" type="Area2D" parent="."]
+[node name="BeadSpawner" type="Area2D" parent="Spawners"]
 position = Vector2(117, 44)
 script = ExtResource("3_im3np")
-spawn_cooldown = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeadSpawner"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner2" type="Area2D" parent="Spawners"]
+position = Vector2(163, 44)
+script = ExtResource("3_im3np")
+bead_number = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner2"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner3" type="Area2D" parent="Spawners"]
+position = Vector2(206, 44)
+script = ExtResource("3_im3np")
+bead_number = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner3"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner4" type="Area2D" parent="Spawners"]
+position = Vector2(258, 44)
+script = ExtResource("3_im3np")
+bead_number = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner4"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner5" type="Area2D" parent="Spawners"]
+position = Vector2(309, 44)
+script = ExtResource("3_im3np")
+bead_number = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner5"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner6" type="Area2D" parent="Spawners"]
+position = Vector2(355, 44)
+script = ExtResource("3_im3np")
+bead_number = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner6"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner7" type="Area2D" parent="Spawners"]
+position = Vector2(398, 44)
+script = ExtResource("3_im3np")
+bead_number = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner7"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner8" type="Area2D" parent="Spawners"]
+position = Vector2(450, 44)
+script = ExtResource("3_im3np")
+bead_number = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner8"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner9" type="Area2D" parent="Spawners"]
+position = Vector2(497, 44)
+script = ExtResource("3_im3np")
+bead_number = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner9"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner10" type="Area2D" parent="Spawners"]
+position = Vector2(543, 44)
+script = ExtResource("3_im3np")
+bead_number = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner10"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner11" type="Area2D" parent="Spawners"]
+position = Vector2(586, 44)
+script = ExtResource("3_im3np")
+bead_number = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner11"]
+shape = SubResource("RectangleShape2D_olvou")
+
+[node name="BeadSpawner12" type="Area2D" parent="Spawners"]
+position = Vector2(638, 44)
+script = ExtResource("3_im3np")
+bead_number = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/BeadSpawner12"]
 shape = SubResource("RectangleShape2D_olvou")

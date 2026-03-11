@@ -11,6 +11,5 @@ func _process(delta: float) -> void:
 	var line := []
 
 	for child in children_list:
-		line.append(child.occupied)
-
+		line.append(child.bead_type)
 	print(line)
