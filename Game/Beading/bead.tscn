@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://comtdmaadesj5"]
+
+[ext_resource type="Script" uid="uid://bls86ebn85rug" path="res://Game/Beading/bead.gd" id="1_7a7ku"]
+[ext_resource type="Texture2D" uid="uid://cx7kh4gvxp11p" path="res://Game/Beads/beads500.png" id="2_td37f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdk3u"]
+radius = 14.0
+height = 42.0
+
+[node name="Bead" type="Area2D" groups=["bead"]]
+script = ExtResource("1_7a7ku")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_td37f")
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rdk3u")
